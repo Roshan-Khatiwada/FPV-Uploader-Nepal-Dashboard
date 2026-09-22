@@ -1,0 +1,5 @@
+.env
+gui_upload_log.json
+gui_destinations.json
+__pycache__/
+*.pyc

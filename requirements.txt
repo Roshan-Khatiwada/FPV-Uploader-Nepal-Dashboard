@@ -1,0 +1,17 @@
+# Install with: pip install -r requirements.txt
+#
+# certifi supplies a trusted CA bundle so HTTPS calls to the credential
+# broker pass certificate verification (needed on machines without a
+# system CA store configured for Python, e.g. a fresh Windows install).
+certifi
+
+# Everything else the GUI needs (tkinter) ships with a normal python.org
+# Python install — nothing else to pip-install.
+#
+# Not required for the GUI/vendor uploader:
+#   rclone  - only used by the non-vendor `upload` / `upload-raw` /
+#             `upload-batch` commands. Vendor uploads talk to R2 directly
+#             over HTTPS and do not use rclone.
+#   ffprobe - only used to read video duration from formats other than
+#             .mp4/.mov (those are parsed natively). Optional; missing
+#             durations are marked "pending" and never block an upload.
