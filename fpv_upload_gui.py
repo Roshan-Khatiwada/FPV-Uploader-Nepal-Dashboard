@@ -294,15 +294,6 @@ class UploaderApp(tk.Tk):
             foreground="#555555",
         ).grid(row=3, column=0, columnspan=3, sticky="w", pady=(2, 0))
 
-        labels = ttk.Frame(self)
-        labels.pack(fill="x", **pad)
-        self.l1_var = tk.StringVar()
-        self.l2_var = tk.StringVar()
-        self.l3_var = tk.StringVar()
-        for i, (text, var) in enumerate((("L1", self.l1_var), ("L2", self.l2_var), ("L3", self.l3_var))):
-            ttk.Label(labels, text=f"{text} (optional):").grid(row=0, column=2 * i, sticky="w")
-            ttk.Entry(labels, textvariable=var, width=18).grid(row=0, column=2 * i + 1, padx=(2, 14))
-
         buttons = ttk.Frame(self)
         buttons.pack(fill="x", **pad)
         ttk.Button(buttons, text="Scan", command=self._scan).pack(side="left")
@@ -456,9 +447,6 @@ class UploaderApp(tk.Tk):
             "upload-vendor",
             str(row.path),
             "--yes",
-            "--l1", self.l1_var.get().strip(),
-            "--l2", self.l2_var.get().strip(),
-            "--l3", self.l3_var.get().strip(),
         ]
         destination = self.destination_var.get().strip()
         if destination:
